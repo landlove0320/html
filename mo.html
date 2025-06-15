@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <title></title>
+  </head>
+
+  <body>
+    <div id="videoBox">
+      <video loop autoplay>
+          <source src="./video/bg.1080p.vp8.vorbis.webm" type="video/webm"/>
+          your browser does not support the video tag
+      </video>
+    </div>
+    
+    <div id="audioBox">
+      <audio id="Music" controls >
+        <source src="./bgm/bgm0.ogg" type="audio/ogg"/>
+      </audio>
+      <div class="infoBox">
+          <p class="">
+              制作作者：Starsyi
+              <br />壁纸作者：NINA
+            </p>感谢基友 J神 的技术支持
+      </div>
+    </div>
+  </body>
+  <script>
+    $(document).ready(function() {
+      $("#audioBox").fadeTo("fast", 0.0);
+      $("#audioBox").hover(
+        function() {
+          $("#audioBox").fadeTo("250", 1);
+        },
+        function() {
+          $("#audioBox").fadeTo("250", 0);
+        }
+      );
+    });
+
+    var maxIndex = 4;
+    var num = 0;
+    var musicPlayer = document.getElementById("Music");
+    musicPlayer.onended = function(){
+      if(++num >= maxIndex)
+      {
+        num = 0;
+      }
+      musicPlayer.src = "./bgm/bgm"+ num + ".ogg";
+      musicPlayer.play();
+    }
+  </script>
+</html>
